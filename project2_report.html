@@ -24,21 +24,13 @@
                 margin: 0 auto;
             }
 
-            /* Headings */
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
+            h1, h2, h3, h4, h5, h6 {
                 line-height: 1.1;
                 font-weight: 600;
                 text-wrap: balance;
             }
 
-            h1,
-            h2 {
+            h1, h2 {
                 border-bottom: 1px solid var(--color-neutral-80);
                 padding-bottom: 0.2em;
             }
@@ -47,18 +39,18 @@
                 margin-block: 1em 0.5rem;
                 font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
                 font-weight: 800;
+            }
 
-                small {
-                    display: block;
-                    width: fit-content;
-                    padding: 0.2em 0.5em;
-                    margin-inline: auto;
-                    color: white;
-                    background: var(--color-neutral-40);
-                    font-size: 40%;
-                    text-transform: uppercase;
-                    white-space: nowrap;
-                }
+            h1 small {
+                display: block;
+                width: fit-content;
+                padding: 0.2em 0.5em;
+                margin-inline: auto;
+                color: white;
+                background: var(--color-neutral-40);
+                font-size: 40%;
+                text-transform: uppercase;
+                white-space: nowrap;
             }
 
             h2 {
@@ -66,28 +58,11 @@
                 color: var(--color-neutral-30);
             }
 
-            h3 {
-                font-size: 130%;
-            }
+            h3 { font-size: 130%; }
 
-            /* Lists */
+            ul, ol { padding-inline-start: 2em; }
 
-            ul,
-            ol {
-                padding-inline-start: 2em;
-            }
-
-            li {
-                &::marker {
-                    color: var(--color-neutral-40);
-                }
-
-                + li {
-                    margin-top: 0.2em;
-                }
-            }
-
-            /* Sectioning elements */
+            li + li { margin-top: 0.2em; }
 
             header {
                 padding-block: 1em;
@@ -101,8 +76,6 @@
                 padding: 0.1rem 2rem;
             }
 
-            /* Figures */
-
             figure {
                 margin: 1em 0;
                 padding: 0.5rem;
@@ -111,33 +84,39 @@
                 box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
                 text-align: center;
                 background: white;
-
-                > figcaption {
-                    font: 500 75% var(--font-sans);
-                    background: var(--color-neutral-95);
-                    padding: 0.5rem;
-                    margin: -0.5rem;
-                    margin-top: 0.5rem;
-                    counter-increment: figure;
-                    text-align: left;
-
-                    &::before {
-                        content: "Figure " counter(figure) ": ";
-                        font-weight: bold;
-                        color: var(--color-neutral-40);
-                    }
-
-                    a:not(:hover, :focus, :active) {
-                        color: inherit;
-                        text-decoration: underline;
-                        text-decoration-color: color-mix(
-                            in lab,
-                            currentColor,
-                            transparent 70%
-                        );
-                    }
-                }
             }
+
+            figure img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            figure > figcaption {
+                font: 500 75% var(--font-sans);
+                background: var(--color-neutral-95);
+                padding: 0.5rem;
+                margin: -0.5rem;
+                margin-top: 0.5rem;
+                counter-increment: figure;
+                text-align: left;
+            }
+
+            figure > figcaption::before {
+                content: "Figure " counter(figure) ": ";
+                font-weight: bold;
+                color: var(--color-neutral-40);
+            }
+
+            .score {
+                display: inline-block;
+                font-weight: bold;
+                padding: 0.1em 0.4em;
+                border-radius: 0.3em;
+                font-size: 90%;
+            }
+            .earnest { background: #d4edda; color: #155724; }
+            .deceptive { background: #f8d7da; color: #721c24; }
+            .neutral { background: #e2e3e5; color: #383d41; }
         </style>
     </head>
 
@@ -147,53 +126,150 @@
                 <small>Project 2</small>
                 Persuasive or Deceptive Visualization?
             </h1>
-
-            <p><strong>Your Name</strong> — <em>Your UCSD Email Address</em></p>
+            <p>
+                <strong>Group Members:</strong><br>
+                [Member 1 Name] — <em>[email]@ucsd.edu</em><br>
+                [Member 2 Name] — <em>[email]@ucsd.edu</em><br>
+                [Member 3 Name] — <em>[email]@ucsd.edu</em><br>
+                [Member 4 Name] — <em>[email]@ucsd.edu</em>
+            </p>
         </header>
 
         <main>
-            <h2>Proposition: [STATE PROPOSITION]</h2>
+            <h2>Proposition: "Economic growth rates in wealthy nations have been in long-term decline, while developing economies are rising to close the gap."</h2>
 
+            <!-- FOR -->
             <section>
                 <h3>FOR the Proposition</h3>
 
                 <figure>
-                    <img src="IMAGE_FILENAME" alt="" />
-                    <figcaption>BRIEF CAPTION HERE.</figcaption>
+                    <img src="viz_for_linechart.png" alt="GDP Growth Over Time: Rich Countries Slowing vs Developing Catching Up" />
+                    <figcaption>
+                        GDP growth rates shown as a 10-year rolling average from 1960–2020. The left panel shows high-income nations (US, UK, Germany, Japan) declining steadily toward 0–2% growth, while the right panel shows developing economies (China, India, Sub-Saharan Africa) sustaining higher growth rates over the same period. A vertical reference line marks the 2008 Global Financial Crisis.
+                    </figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p><strong>Design Decisions and Rationale:</strong></p>
+                <ul>
+                    <li>
+                        <span class="score earnest">Score: +1 — Mostly Earnest</span>
+                        <strong>10-year rolling average smoothing:</strong> Annual GDP growth is inherently noisy due to recessions, booms, and one-time shocks. Using a rolling average reveals the long-run structural trend that the proposition is actually about, rather than single-year fluctuations. This is transparently labeled in the chart title. The tradeoff is that smoothing also hides developing nation volatility — making their growth appear more stable and consistent than raw annual data would show. We considered using raw annual values but found the trend unreadable without smoothing.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: +1.5 — Mostly Earnest</span>
+                        <strong>Split panel layout with shared y-axis scale:</strong> Separating high-income and developing nations into two panels reduces visual clutter and makes the directional contrast immediately readable. Crucially, both panels share the same y-axis scale, which allows fair comparison of the magnitude of growth rates across groups. The left-to-right layout subtly frames rich countries as "the past" and developing countries as "the future," which reinforces the proposition's narrative without distorting any data.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Country selection (China, India, Sub-Saharan Africa for developing group):</strong> These are recognizable, archetypal examples of each group, which aids readability and interpretability. However, China and India are among the fastest-growing economies ever recorded — cherry-picking them significantly inflates the developing group average. A more representative sample of developing nations would show more modest and volatile growth. We chose these countries because they clearly illustrate the proposition, while acknowledging the selection inflates the developing side.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: +1.5 — Mostly Earnest</span>
+                        <strong>2008 Global Financial Crisis reference line:</strong> Adding a vertical annotation at 2008 gives readers a concrete anchor to interpret the post-2008 slowdown in rich countries. This is an earnest contextual addition that helps explain why rich-country growth dropped sharply after that point. It could subtly imply the decline is purely crisis-driven rather than structural, but it is presented as a factual label rather than an interpretive claim.
+                    </li>
+                </ul>
+
+                <figure>
+                    <img src="viz_for_barchart.png" alt="GDP Growth by Decade: High-Income vs Developing Nations" />
+                    <figcaption>
+                        Average GDP growth aggregated by decade (1960s–2010s) shown as side-by-side bars (left panel) and as a diverging gap chart (right panel) measuring the growth difference between developing and high-income nations per decade. High-income bars shrink consistently each decade while developing bars remain elevated. The gap panel shows developing nations flipped from underperforming in the 1960s to outpacing rich countries by 4+ percentage points in recent decades.
+                    </figcaption>
+                </figure>
 
                 <ul>
-                    <li>RATIONALE_1</li>
-                    <li>RATIONALE_2</li>
-                    <li>RATIONALE_3</li>
+                    <li>
+                        <span class="score earnest">Score: +1 — Mostly Earnest</span>
+                        <strong>Decade aggregation as a calculated field:</strong> Binning annual data into decades is a meaningful transformation that compresses noisy year-to-year variation into a clean long-run summary. This earns the advanced data transformation rubric credit and makes the trend unmistakable. The tradeoff is that decade averages can obscure within-decade volatility — a country that grew fast for 5 years and contracted for 5 years would show the same average as one that grew steadily. We considered 5-year bins but found they still looked too noisy to be persuasive.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Diverging gap panel with "Gap at its narrowest" annotation:</strong> Showing the raw growth gap (Developing minus High-Income) as a separate panel is a calculated field transformation that makes the convergence argument feel quantitatively definitive. However, annotating the 2010s as "Gap at its narrowest" is misleading — this refers to the growth rate gap, not the absolute wealth gap. A narrowing growth rate gap does not mean developing nations are catching up in real dollar terms. We included this annotation because it was technically accurate and visually compelling, while acknowledging it overstates the convergence story.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Color encoding (gray for high-income, orange for developing):</strong> Gray is a receding, passive color that reads as fading or declining; orange is energetic and active. This emotional encoding primes the reader to interpret high-income nations as losing momentum before they even process the numbers. We considered using blue vs. orange (a standard diverging palette) but found the gray-orange contrast more immediately persuasive for this argument.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Country selection inflating the developing average:</strong> Same issue as Visualization 1 — the developing group includes China, India, Brazil, and other historically high-growth outliers. This selection inflates the group average significantly compared to what a random sample of developing nations would show. We made this choice because it produces the most persuasive visualization for the FOR side, while disclosing the country list in the chart's source note.
+                    </li>
                 </ul>
             </section>
 
+            <!-- AGAINST -->
             <section>
                 <h3>AGAINST the Proposition</h3>
 
                 <figure>
-                    <img src="IMAGE_FILENAME" alt="" />
-                    <figcaption>BRIEF CAPTION HERE.</figcaption>
+                    <img src="viz_against_wealthgap.png" alt="The Wealth Gap: GDP Per Capita 1960-2020" />
+                    <figcaption>
+                        GDP per capita in constant 2010 USD from 1960–2020. High-income nations (solid lines) rise steeply from ~$15,000–$18,000 to over $50,000. Developing nations (dashed lines) remain near zero across the entire period. The shaded blue region marks the absolute dollar gap between the US and China, which grows from $28,242 in 1980 to $45,344 by 2020 — the opposite of convergence. Subtitle: "Even as growth rates converge, the absolute dollar gap has widened."
+                    </figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p><strong>Design Decisions and Rationale:</strong></p>
+                <ul>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Metric substitution: growth rate → absolute GDP per capita:</strong> Switching to absolute dollar values is a valid and important economic perspective — it captures real living standard differences rather than just rates of change. However, this metric is deliberately chosen because it tells the opposite story from the same dataset. The FOR side's metric (growth rate) is never acknowledged, which reframes what "winning" means without disclosing that the alternative framing exists. Both metrics are valid; we chose this one because it supports our argument.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Shaded area encoding for the US–China gap:</strong> Area fills read as physically larger than equivalent line-based encodings. The light blue shaded region between the US and China visually dominates the chart, making the gap feel overwhelming even before the reader processes the dollar annotations. We could have shown the gap as a separate line chart of the difference — which would have looked less dramatic — but chose the shaded area because it maximizes the visual impact of the widening gap.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Dashed lines for developing nations:</strong> Solid lines for rich countries, dashed for developing nations subtly codes developing economies as incomplete or secondary — a visual convention typically used to indicate uncertainty or projections. This is not explicitly misleading but reinforces the narrative that developing nation trajectories are less substantial or reliable.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Subtitle framing ("Even as growth rates converge, the absolute dollar gap has widened"):</strong> This subtitle tells the reader exactly what conclusion to draw before they examine the data. It directly rebuts the FOR proposition using the chart's own framing. While this is a factually accurate statement, it forecloses the reader's independent interpretation and functions as editorial commentary embedded in what appears to be a neutral chart label.
+                    </li>
+                </ul>
+
+                <figure>
+                    <img src="viz_against_volatility.png" alt="The Volatility Trap: GDP Per Capita Growth 5-Year Rolling Average" />
+                    <figcaption>
+                        GDP per capita growth rates shown as a 5-year rolling average with ±1 standard deviation shading, split into high-income nations (left) and developing economies (right). High-income nations show tight, stable bands converging near 1–3%. Developing nations show wide, chaotic shading — with China's band spanning nearly 20 percentage points at its widest. Crisis annotations mark the Asian Financial Crisis (1997) and Global Financial Crisis (2008) on the developing panel only.
+                    </figcaption>
+                </figure>
 
                 <ul>
-                    <li>RATIONALE_1</li>
-                    <li>RATIONALE_2</li>
-                    <li>RATIONALE_3</li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>±1 standard deviation shading:</strong> Showing variance bands is a legitimate and common statistical practice that honestly conveys uncertainty and volatility. However, the shading for early-period China (1960s–70s) is enormous and visually dominates the chart, creating an impression of chaos that the more recent, stable data doesn't support. A reader who glances at the chart absorbs the early volatility as the overall story, even though developing nation growth has stabilized considerably since the 1990s.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Y-axis range: −20% to +20%:</strong> This wide range makes rich country growth look artificially flat and boring — their lines barely move across the entire panel. Developing nation swings appear extreme and dangerous by comparison, even though most actual variation stays between 0–10%. A narrower axis (say −5% to +15%) would show both groups as meaningfully volatile. We chose the wider range because the visual contrast between the two panels is the core argument of this chart.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
+                        <strong>Crisis annotations on developing panel only:</strong> Labeling "Asian Financial Crisis" and "Global Financial Crisis" only on the right panel implies these events uniquely destabilized developing economies. In reality, the Global Financial Crisis originated in and severely affected rich countries. Placing the crisis labels only on the developing side subtly assigns blame and fragility to poorer nations, reinforcing the volatility narrative through selective annotation.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Subtitle framing ("Rich nation's growth lower, but stable; developing growth is higher but far more volatile"):</strong> Like the wealth gap chart, this subtitle pre-interprets the visualization for the reader before they engage with the data. The word "trap" in the title ("The Volatility Trap") is particularly loaded — it frames developing nation growth not as progress but as a dangerous illusion, which is an editorial judgment embedded in what appears to be a descriptive label.
+                    </li>
                 </ul>
             </section>
 
+            <!-- REFLECTION -->
             <section>
                 <h2>Final Reflection</h2>
 
-                <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
+                <p>
+                    Going into this project, we assumed there would be a clear line between "honest" and "deceptive" visualization. What surprised us most was discovering how few of our choices fell cleanly on either side. Using a rolling average is standard practice in time-series analysis — but it also happened to smooth away the volatility that would have undermined our FOR argument. Choosing GDP growth rate over absolute GDP per capita is a defensible methodological decision — but it also happened to be the metric that supported our proposition. Almost every choice that seemed earnest at first had a persuasive consequence we hadn't fully anticipated, and almost every deceptive technique we used was grounded in a legitimate analytical rationale. The boundary between the two is not a line but a spectrum.
+                </p>
+
+                <p>
+                    The AGAINST visualizations forced us to confront this more directly, because we were consciously choosing metrics and encodings to contradict our own proposition. Switching to absolute GDP per capita, widening the y-axis, and adding area shading were all technically valid choices — but we made them because they told the story we wanted, not because they were the most representative view of the data. That experience made us realize that deception in visualization is rarely about fabricating data. It is almost always about selection: which metric, which countries, which time window, which encoding. Every visualization is a series of selection decisions, and those decisions always reflect the perspective and goals of the person making them — whether or not that person is aware of it.
+                </p>
+
+                <p>
+                    We now define ethical visualization not as "showing everything" — that is impossible — but as being transparent about what you chose and why, and acknowledging that other valid framings exist. The distinction between acceptable persuasion and misleading visualization is less about the techniques used and more about disclosure. A truncated axis that is clearly labeled is different from one that is not. A cherry-picked country sample that is disclosed in the caption is different from one presented as representative. The most dangerous deceptions in our visualizations were not the dramatic ones — they were the quiet ones, like color choices and subtitle framing, that shaped the reader's interpretation before they even looked at the data. Ethical analysis means making those quiet choices visible, even when doing so weakens your argument.
+                </p>
             </section>
         </main>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>
