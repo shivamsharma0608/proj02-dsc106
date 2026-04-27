@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <meta charset="utf-8" />
         <title>Project 2 Report</title>
         <style>
             :root {
@@ -129,7 +130,7 @@
             <p>
                 <strong>Group Members:</strong><br>
                 [Shivam Sharma] — <em>shs077@ucsd.edu</em><br>
-                [Luis Corona] — <em>[email]@ucsd.edu</em><br>
+                [Luis Corona] — <em>lucorona@ucsd.edu</em><br>
                 [Jimbo Cai] — <em>[email]@ucsd.edu</em><br>
                 [Manning Karahashi] — <em>[email]@ucsd.edu</em>
             </p>
@@ -143,9 +144,9 @@
                 <h3>FOR the Proposition</h3>
 
                 <figure>
-                    <img src="viz_for_linechart.png" alt="GDP Growth Over Time: Rich Countries Slowing vs Developing Catching Up" />
+                    <img src="viz_for_linechart.png" alt="GDP growth over time with two panels: high-income countries slowing, developing examples plus median of other non-rich economies, 2008 crisis line marked" />
                     <figcaption>
-                        GDP growth rates shown as a 10-year rolling average from 1960–2020. The left panel shows high-income nations (US, UK, Germany, Japan) declining steadily toward 0–2% growth, while the right panel shows developing economies (China, India, Sub-Saharan Africa) sustaining higher growth rates over the same period. A vertical reference line marks the 2008 Global Financial Crisis.
+                        GDP growth rates use a 10-year rolling average from 1960–2020 so noisy single years don’t hide the long-run pattern. The left panel follows four major high-income economies (US, UK, Germany, Japan) as average growth slides down toward roughly 1–2% by the end of the series. The right panel shows China, India, and a Sub-Saharan Africa aggregate, plus a dashed black line: the median growth rate among about 220 other non high-income economies in the data, smoothed the same way. Those example countries are famous fast growers; the median line checks whether “developing-world” strength shows up beyond a few spotlight names. Both panels share the same vertical axis so you can compare growth percentages fairly. The vertical line at 2008 marks the global financial crisis as a shared benchmark in time. We are arguing about <em>growth rates</em> here—not dollar wealth—so “closing the gap” means richer and poorer economies moving closer in terms of yearly growth performance, not necessarily catching up in total income per person.
                     </figcaption>
                 </figure>
 
@@ -160,8 +161,12 @@
                         <strong>Split panel layout with shared y-axis scale:</strong> Separating high-income and developing nations into two panels reduces visual clutter and makes the directional contrast immediately readable. Crucially, both panels share the same y-axis scale, which allows fair comparison of the magnitude of growth rates across groups. The left-to-right layout subtly frames rich countries as "the past" and developing countries as "the future," which reinforces the proposition's narrative without distorting any data.
                     </li>
                     <li>
-                        <span class="score deceptive">Score: −1 — Somewhat Deceptive</span>
-                        <strong>Country selection (China, India, Sub-Saharan Africa for developing group):</strong> These are recognizable, archetypal examples of each group, which aids readability and interpretability. However, China and India are among the fastest-growing economies ever recorded — cherry-picking them significantly inflates the developing group average. A more representative sample of developing nations would show more modest and volatile growth. We chose these countries because they clearly illustrate the proposition, while acknowledging the selection inflates the developing side.
+                        <span class="score deceptive">Score: −0.5 — Slightly Deceptive</span>
+                        <strong>Country selection (China, India, Sub-Saharan Africa for developing group):</strong> These are recognizable examples that keep the chart readable. China and India are still extreme success stories compared with most countries, which can exaggerate how “catch-up” feels. We partly balance that by adding the median of all other non-rich-economies line so the graphic is not only hero countries. Even so, the median mixes very different economies in one curve, so it is an overview—not the last word on fairness of country choice.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: +1 — Mostly Earnest</span>
+                        <strong>Median benchmark on the developing panel:</strong> The dashed line plots, for each year, the median GDP growth rate across individual non–high-income economies we could identify cleanly in the dataset (excluding obvious World Bank aggregate regions). We apply the same 10-year smoothing as every other series. That gives readers a “typical economy” reference next to China, India, and Sub-Saharan Africa. It supports the FOR story when that median stays clearly above the rich-country paths in later decades, and it makes our design choices easier to judge because the spotlight countries are no longer the only story on the plot.
                     </li>
                     <li>
                         <span class="score earnest">Score: +1.5 — Mostly Earnest</span>
